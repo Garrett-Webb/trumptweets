@@ -2,7 +2,7 @@ import csv
 import re
 import pickle
 
-filename = "trumptweets.csv"
+filename = "trumptweets_unclean.csv"
 
 # read in file
 with open(filename, 'r') as f:
@@ -12,6 +12,7 @@ with open(filename, 'r') as f:
 # remove colname
 tweets.pop(0)
 
+counter = 0
 text = []
 for data in tweets:
     if len(data) > 0:
@@ -35,8 +36,10 @@ for data in tweets:
 
     # remove mentions
     tweet = re.sub(r'@.*', '', tweet, flags=re.MULTILINE)
-    tweets.append(tweet)
-    print(tweet)
+
+    obj = {'id': str(counter), 'language': 'en', 'text': tweet}
+    text.append(obj)
+    counter = counter + 1
 
 with open('clean.pkl', 'wb') as f:
     pickle.dump(tweets, f)
