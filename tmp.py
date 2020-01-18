@@ -65,7 +65,17 @@ def key_phrases(documents):
     # for document in documents.values():
         # print("Asking key-phrases on '{}' (id: {})".format(document['text'], document['id']))
 
-    response = client.key_phrases(documents=[x for x in documents.values()][:10])
+    response = client.key_phrases(documents=[x for x in documents.values()][:100])
+
+    responses = []
+    for i in 1:ceil(len(documents) / 100):
+        start = i * 100
+        end = 100 * (i + 1)
+        if (i == ceil(len(documents) / 100)):
+            end = len(documents)
+
+        response = client.key_phrases(documents=[x for x in documents.values()][start:end])
+        responses.append(response)
 
     for response in response.documents:
         # print("Document Id: ", response.id)
