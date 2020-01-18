@@ -7,6 +7,7 @@ from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 import pickle
 import random
+from itertools import chain
 
 subscription_key = "fcbc20c49e2745e6985e31e46fc3b14d"
 endpoint = "https://trumptweets-text-analytics.cognitiveservices.azure.com/"
