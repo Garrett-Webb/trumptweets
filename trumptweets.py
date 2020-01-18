@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import csv
 import os
+import re
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 
@@ -14,7 +16,7 @@ def authenticateClient():
     return text_analytics_client
 
 def sentiment():
-    
+
     client = authenticateClient()
 
     try:
@@ -37,7 +39,7 @@ def sentiment():
 sentiment()
 
 def key_phrases():
-    
+
     client = authenticateClient()
 
     try:

@@ -3,7 +3,7 @@ import re
 import pickle
 
 filename = "trumptweets_unclean.csv"
-out = open("output.txt","w+")
+
 # read in file
 with open(filename, 'r') as f:
   reader = csv.reader(f)
@@ -13,7 +13,7 @@ with open(filename, 'r') as f:
 tweets.pop(0)
 
 counter = 0
-text = []
+text = {}
 for data in tweets:
     if len(data) > 0:
         tweet = data[0]
@@ -38,9 +38,10 @@ for data in tweets:
     tweet = re.sub(r'@([A-Za-z0-9_]+)', '', tweet, flags=re.MULTILINE)
 
     obj = {'id': str(counter), 'language': 'en', 'text': tweet}
-    text.append(obj)
+    # text.append(obj)
+    text[str(counter)] = obj
     counter = counter + 1
-    out.write(tweet)
-    out.write("\n")
+
 with open('clean.pkl', 'wb') as f:
+    print(text)
     pickle.dump(text, f)
