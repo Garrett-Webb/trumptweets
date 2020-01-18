@@ -1,6 +1,8 @@
 import os
 import re
 import csv
+import math
+import time
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 import pickle
@@ -65,26 +67,28 @@ def key_phrases(documents):
     # for document in documents.values():
         # print("Asking key-phrases on '{}' (id: {})".format(document['text'], document['id']))
 
-    response = client.key_phrases(documents=[x for x in documents.values()][:100])
-
+    #response = client.key_phrases(documents=[x for x in documents.values()][:100])
+    chunk_size = 1000
     responses = []
-    for i in 1:ceil(len(documents) / 100):
-        start = i * 100
-        end = 100 * (i + 1)
-        if (i == ceil(len(documents) / 100)):
+    for i in range(math.ceil(len(documents) / chunk_size)):
+        start = i * chunk_size
+        end = chunk_size * (i + 1)
+        if (i == math.ceil(len(documents) / chunk_size)):
             end = len(documents)
 
         response = client.key_phrases(documents=[x for x in documents.values()][start:end])
-        responses.append(response)
+        responses.append(response.documents)
+        time.sleep(65)
 
-    for response in response.documents:
+    #for response in responses:
         # print("Document Id: ", response.id)
         # print("\tKey Phrases:")
-        documents[response.id]['key_phrases'] = response.key_phrases
-        print(documents[response.id])
+        #documents[response.id]['key_phrases'] = response.key_phrases
+        #print(documents[response.id])
         # for phrase in response.key_phrases:
             # print("\t\t", phrase)
-
+    with open('responses.pkl', 'wb') as f:
+        pickle.dump(responses,f)
     return documents
 
 # with open(filename, 'rb') as pickle_file:
@@ -95,4 +99,4 @@ def key_phrases(documents):
 
 documents = clean(filename)
 dict = key_phrases(documents)
-# print(dict)
+#print(dict)
