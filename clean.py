@@ -42,4 +42,4 @@ for data in tweets:
     counter = counter + 1
 
 with open('clean.pkl', 'wb') as f:
-    pickle.dump(tweets, f)
+    pickle.dump(text, f)
