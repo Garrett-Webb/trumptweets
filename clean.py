@@ -29,13 +29,13 @@ for data in tweets:
     tweet = tweet.replace('”',"")
 
     # remove link
-    tweet = re.sub(r'https?://.*', '', tweet, flags=re.MULTILINE)
+    tweet = re.sub(r'https?://.*\ ', '', tweet, flags=re.MULTILINE)
 
     # remove hashtag
-    tweet = re.sub(r'#.*', '', tweet, flags=re.MULTILINE)
+    tweet = re.sub(r'#.*\ ', '', tweet, flags=re.MULTILINE)
 
     # remove mentions
-    tweet = re.sub(r'@.*', '', tweet, flags=re.MULTILINE)
+    tweet = re.sub(r'@.*\ ', '', tweet, flags=re.MULTILINE)
 
     obj = {'id': str(counter), 'language': 'en', 'text': tweet}
     text.append(obj)
