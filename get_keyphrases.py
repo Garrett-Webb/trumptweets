@@ -47,7 +47,6 @@ def clean(filename):
         tweet = re.sub(r'@([A-Za-z0-9_]+)', '', tweet, flags=re.MULTILINE)
 
         obj = {'id': str(counter), 'language': 'en', 'text': tweet}
-        # text.append(obj)
         text[str(counter)] = obj
         counter = counter + 1
 
@@ -60,14 +59,9 @@ def authenticateClient():
         endpoint=endpoint, credentials=credentials)
     return text_analytics_client
 
-# Return key phrases for a text document.
-def key_phrases(documents):
+# Return key phrase responses for a text document.
+def get_key_phrase_responses(documents):
     client = authenticateClient()
-
-    # for document in documents.values():
-        # print("Asking key-phrases on '{}' (id: {})".format(document['text'], document['id']))
-
-    #response = client.key_phrases(documents=[x for x in documents.values()][:100])
     chunk_size = 1000
     responses = []
     for i in range(math.ceil(len(documents) / chunk_size)):
@@ -76,27 +70,27 @@ def key_phrases(documents):
         if (i == math.ceil(len(documents) / chunk_size)):
             end = len(documents)
 
-        response = client.key_phrases(documents=[x for x in documents.values()][start:end])
+        response = client.key_phrases(documents =
+            [x for x in documents.values()][start:end])
         responses.append(response.documents)
         time.sleep(65)
 
-    #for response in responses:
-        # print("Document Id: ", response.id)
-        # print("\tKey Phrases:")
-        #documents[response.id]['key_phrases'] = response.key_phrases
-        #print(documents[response.id])
-        # for phrase in response.key_phrases:
-            # print("\t\t", phrase)
-    with open('responses.pkl', 'wb') as f:
-        pickle.dump(responses,f)
+    responses = list(chain.from_iterable(responses))
+    return responses
+
+# Given API responses, add key phrases to document objects.
+def add_key_phrases(documents, responses):
+    if responses is None:
+        with open('responses_unchained.pkl', 'rb') as f:
+            responses = pickle.load(f)
+
+    for response in responses:
+        documents[response.id]['key_phrases'] = response.key_phrases
+
     return documents
 
-# with open(filename, 'rb') as pickle_file:
-#     documents = pickle.load(pickle_file)
-#     documents = random.sample(documents.items(), k=10)
-#     print(documents)
-#     key_phrases(documents)
 
 documents = clean(filename)
-dict = key_phrases(documents)
-#print(dict)
+# responses = get_key_phrase_responses(documents)
+documents = add_key_phrases(documents, None)
+print(documents)
