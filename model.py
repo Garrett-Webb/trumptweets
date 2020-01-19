@@ -34,6 +34,8 @@ def clean_nltk(text):
     new_string = text.lower()
     new_string = re.sub(r"'s\b","",new_string)
     new_string = re.sub("&amp;", "and", new_string)
+    new_string = re.sub(r"\(", "", new_string)
+    new_string = re.sub(r"\)", "", new_string)
     new_string = remove_non_ascii(new_string)
 
     return new_string
