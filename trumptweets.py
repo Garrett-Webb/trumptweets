@@ -18,7 +18,7 @@ api = tweepy.API(auth)
 
 #keyword = sys.argv[1]
 
-list_of_good_ones = ['nancy', 'immigration', 'crazy', 'collusion', 'obama', 'china', 'fake', 'media']
+list_of_good_ones = ['nancy', 'immigration', 'crazy', 'collusion', 'obama', 'china', 'fake', 'media', 'facts']
 
 while True:
     keyword = random.choice(list_of_good_ones)
@@ -31,5 +31,6 @@ while True:
     if len(tweet) > 280 or len(tweet.split()) < 6:
         print("\n\nEither too long or too short, sorry. Trying again.\n\n")
         continue
+    model.treat_tweet(tweet)
     api.update_status(tweet)
     time.sleep(7200)

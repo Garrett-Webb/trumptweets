@@ -131,10 +131,22 @@ def get_tweet(keyword):
     sentence = generate_sentence(starting_words, model)
     return sentence
 
-
+def treat_tweet(text):
+    list_of_caps = ['rigged', 'fraud', 'fake', 'crazy', 'no', 'america', 'collusion', 'obstruction', 'great', 'bad', 'facts', 'again', 'country', 'but', 'beg', 'promises', 'nothing', 'never', 'hoax', 'best', 'keep']
+    sentence = text.split()
+    i = 0
+    for word in sentence:
+        if word in list_of_caps:
+            sentence[i] = word.upper()
+        i = i + 1
+    text = ' '.join(sentence)
+    return text
+    
 def main():
     keyword = sys.argv[1]
-    print(get_tweet(keyword))
+    tweet = get_tweet(keyword)
+    tweet = treat_tweet(tweet)
+    print(tweet)
 
 
 if __name__ == "__main__":
