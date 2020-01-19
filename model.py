@@ -1,16 +1,18 @@
 import pickle
 import numpy as np
-import pandas as pd
 import re
 import nltk
-from unidecode import unidecode
 from nltk import bigrams, trigrams
 from collections import Counter, defaultdict
 import random
+import sys
 
 
 # Given a keyword return matching documents (tweets).
 def subset_documents(documents, keyword):
+    if keyword == 'all':
+        return [document['text'] for document in documents.values()]
+
     matches = []
     for document in documents.values():
         if 'key_phrases' in document:
@@ -47,6 +49,7 @@ def generate_corpus(text):
         r'(?!\.).*\.txt',
         cat_pattern=r'(neg|pos)/.*',
         encoding="ascii")
+
     return mycorpus
 
 
@@ -94,17 +97,20 @@ def generate_sentence(starting_words, model):
 
 
 def main():
+    keyword = sys.argv[3]
+    starting_words = [sys.argv[1], sys.argv[2]]
+    print(starting_words)
+
     with open('documents.pkl', 'rb') as f:
         documents = pickle.load(f)
 
-    keyword = 'immigration'
     matches = subset_documents(documents, keyword)
 
     mycorpus = generate_corpus(matches)
     numsents = len(mycorpus.sents('tempout.txt'))
     model = train(mycorpus)
 
-    starting_words = ["mexico", "is"]
+    # starting_words = ["mexico", "is"]
     sentence = generate_sentence(starting_words, model)
     print(sentence)
 
