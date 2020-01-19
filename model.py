@@ -9,6 +9,7 @@ import random
 import sys
 
 # TODO: clean key phrases (make all lowercase, ascii only)
+# TODO: auto twitter bot
 
 # Given a keyword return matching documents (tweets).
 def subset_documents(documents, keyword):
