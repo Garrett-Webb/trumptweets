@@ -7,9 +7,11 @@ from nltk import bigrams, trigrams
 from collections import Counter, defaultdict
 import random
 import sys
+import string
 
-# TODO: clean key phrases (make all lowercase, ascii only)
+
 # TODO: auto twitter bot
+
 
 # Given a keyword return matching documents (tweets).
 def subset_documents(documents, keyword):
@@ -32,7 +34,6 @@ def remove_non_ascii(text):
 
 
 def clean_nltk(text):
-    # lowercase text
     new_string = text.lower()
     new_string = re.sub(r"'s\b","",new_string)
     new_string = re.sub("&amp;", "and", new_string)
@@ -99,17 +100,25 @@ def generate_sentence(starting_words, model):
     return ' '.join([t for t in starting_words if t])
 
 
+def contains_punct(word):
+    for c in word:
+        if c in string.punctuation:
+            return True
+    return False
+
+
 def generate_starting_words(documents):
-    tweet = random.choice(documents)
-    tweet = clean_nltk(tweet)
-    words = tweet.split()[:2]
+    words = ['.', '.']
+    while contains_punct(words[0]) or contains_punct(words[1]):
+        tweet = random.choice(documents)
+        tweet = clean_nltk(tweet)
+        words = tweet.split()[:2]
+
     return words
 
 
 def main():
     keyword = sys.argv[1]
-    # starting_words = [sys.argv[1], sys.argv[2]]
-    # print(starting_words)
 
     with open('documents.pkl', 'rb') as f:
         documents = pickle.load(f)
@@ -122,7 +131,6 @@ def main():
     numsents = len(mycorpus.sents('tempout.txt'))
     model = train(mycorpus)
 
-    # starting_words = ["mexico", "is"]
     sentence = generate_sentence(starting_words, model)
     print(sentence)
 
