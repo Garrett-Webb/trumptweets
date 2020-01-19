@@ -10,9 +10,6 @@ import sys
 import string
 
 
-# TODO: auto twitter bot
-
-
 # Given a keyword return matching documents (tweets).
 def subset_documents(documents, keyword):
     if keyword == 'all':
@@ -117,7 +114,7 @@ def generate_starting_words(documents):
     return words
 
 
-def main():
+def get_tweet():
     keyword = sys.argv[1]
 
     with open('documents.pkl', 'rb') as f:
@@ -132,7 +129,11 @@ def main():
     model = train(mycorpus)
 
     sentence = generate_sentence(starting_words, model)
-    print(sentence)
+    return sentence
+
+
+def main():
+    print(get_tweet())
 
 
 if __name__ == "__main__":
