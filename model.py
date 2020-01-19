@@ -133,7 +133,7 @@ def get_tweet(keyword):
 
 
 def main():
-    print(get_tweet())
+    print(get_tweet(keyword))
 
 
 if __name__ == "__main__":
