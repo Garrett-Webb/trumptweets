@@ -2,11 +2,13 @@ import pickle
 import numpy as np
 import re
 import nltk
+import random
 from nltk import bigrams, trigrams
 from collections import Counter, defaultdict
 import random
 import sys
 
+# TODO: clean key phrases (make all lowercase, ascii only)
 
 # Given a keyword return matching documents (tweets).
 def subset_documents(documents, keyword):
@@ -96,15 +98,24 @@ def generate_sentence(starting_words, model):
     return ' '.join([t for t in starting_words if t])
 
 
+def generate_starting_words(documents):
+    tweet = random.choice(documents)
+    tweet = clean_nltk(tweet)
+    words = tweet.split()[:2]
+    return words
+
+
 def main():
-    keyword = sys.argv[3]
-    starting_words = [sys.argv[1], sys.argv[2]]
-    print(starting_words)
+    keyword = sys.argv[1]
+    # starting_words = [sys.argv[1], sys.argv[2]]
+    # print(starting_words)
 
     with open('documents.pkl', 'rb') as f:
         documents = pickle.load(f)
 
     matches = subset_documents(documents, keyword)
+    starting_words = generate_starting_words(matches)
+    print(starting_words)
 
     mycorpus = generate_corpus(matches)
     numsents = len(mycorpus.sents('tempout.txt'))
