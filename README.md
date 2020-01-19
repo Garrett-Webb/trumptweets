@@ -5,8 +5,8 @@ This was made for CruzHacks 2020 by Garrett Webb and Chandni Nagda, please do
 not steal our work, just ask us.
 
 ## Goal
-Analyze trump's nonsense using Microsoft Azure NLP as well as NLTK NLP python
-libraries.
+Analyze Trump's nonsense using Microsoft Azure NLP and trigram language model.
+Generate similar nonsense for a given topic.
 
 ## Usage
 
@@ -18,7 +18,7 @@ Azure Text Analytics. Set the following for Microsoft Azure:
 * `endpoint`
 * `filename`
 
-Set the following for TwitterL
+Set the following for Twitter
 * `auth = tweepy.OAuthHandler(...)`
 * `auth.set_access_token(...)`
 
