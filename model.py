@@ -115,8 +115,6 @@ def generate_starting_words(documents):
 
 
 def get_tweet(keyword):
-    
-
     with open('documents.pkl', 'rb') as f:
         documents = pickle.load(f)
 
@@ -131,8 +129,12 @@ def get_tweet(keyword):
     sentence = generate_sentence(starting_words, model)
     return sentence
 
+
 def treat_tweet(text):
-    list_of_caps = ['rigged', 'fraud', 'fake', 'crazy', 'no', 'america', 'collusion', 'obstruction', 'great', 'bad', 'facts', 'again', 'country', 'but', 'beg', 'promises', 'nothing', 'never', 'hoax', 'best', 'keep']
+    list_of_caps = ['rigged', 'fraud', 'fake', 'crazy', 'no', 'america',
+                    'collusion', 'obstruction', 'great', 'bad', 'facts',
+                    'again', 'country', 'but', 'beg', 'promises', 'nothing',
+                    'never', 'hoax', 'best', 'keep']
     sentence = text.split()
     i = 0
     for word in sentence:
@@ -140,8 +142,11 @@ def treat_tweet(text):
             sentence[i] = word.upper()
         i = i + 1
     text = ' '.join(sentence)
+    text = re.sub(r"\s+(\W)",r"\1", text)
+    text = text.capitalize()
     return text
-    
+
+
 def main():
     keyword = sys.argv[1]
     tweet = get_tweet(keyword)
