@@ -114,8 +114,8 @@ def generate_starting_words(documents):
     return words
 
 
-def get_tweet():
-    keyword = sys.argv[1]
+def get_tweet(keyword):
+    #keyword = sys.argv[1]
 
     with open('documents.pkl', 'rb') as f:
         documents = pickle.load(f)
