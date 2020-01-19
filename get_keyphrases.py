@@ -9,8 +9,8 @@ import pickle
 import random
 from itertools import chain
 
-subscription_key = "fcbc20c49e2745e6985e31e46fc3b14d"
-endpoint = "https://trumptweets-text-analytics.cognitiveservices.azure.com/"
+# subscription_key = "fcbc20c49e2745e6985e31e46fc3b14d"
+# endpoint = "https://trumptweets-text-analytics.cognitiveservices.azure.com/"
 filename = "trumptweets_unclean.csv"
 
 def clean(filename):
@@ -55,9 +55,9 @@ def clean(filename):
 
 # Authenticate text analytics and return client.
 def authenticateClient():
-    credentials = CognitiveServicesCredentials(subscription_key)
+    credentials = CognitiveServicesCredentials(config.subscription_key)
     text_analytics_client = TextAnalyticsClient(
-        endpoint=endpoint, credentials=credentials)
+        endpoint=config.endpoint, credentials=credentials)
     return text_analytics_client
 
 # Return key phrase responses for a text document.
