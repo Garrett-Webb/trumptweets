@@ -26,7 +26,7 @@ Then either run model.py with topic as the command line argument, or run
 trumptweets.py and let it go (it will continuously tweet at the time interval
 you set). Here is an example on the command line:
 
-`python3 model.py imigration`
+`python3 model.py <keyword>`
 will output a tweet to the console
 or
 `python3 trumptweets.py`
