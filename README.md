@@ -28,9 +28,8 @@ you set). Here is an example on the command line:
 
 * `python3 model.py <keyword>`
 will output a tweet to the console
-or
 * `python3 trumptweets.py`
-will output a tweet to the console as well as post it to twitter.
+will generate and output a tweet to the console as well as post it to twitter on the time interval you specify in the code.
 
 
 Go to https://twitter.com/R3alFakeDonald (our twitter bot) or your make own
