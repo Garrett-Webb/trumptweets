@@ -21,8 +21,8 @@ list_of_good_ones = ['nancy', 'immigration', 'crazy', 'collusion', 'obama',
 
 while True:
     keyword = random.choice(list_of_good_ones)
-    print("Keyword: ")
-    print(keyword)
+    print("Keyword: ", keyword)
+    #print(keyword)
     tweet = model.get_tweet(keyword)
     
     if len(tweet) > 280 or len(tweet.split()) < 8:
@@ -31,6 +31,6 @@ while True:
         continue
     tweet = model.treat_tweet(tweet)
     api.update_status(tweet)
-    print("tweeting: ")
-    print(tweet)
+    print("tweeting: ", tweet)
+    #print(tweet)
     time.sleep(90)
