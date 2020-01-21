@@ -11,15 +11,15 @@ Generate similar nonsense for a given topic.
 ## Usage
 
 Install what you'll need:
-* `python 3.x.x`
-* `sudo easy_install pip`
-* `pip install nltk` 
-* `pip install tweepy`
-* `pip install azure`
-* `pip install numpy`
-* `python3`
+* `go on the internet and get python 3.x.x (latest version)`
+* `sudo easy_install pip (mac only, or just install pip the way you would)`
+* `pip install nltk (or pip3)` 
+* `pip install tweepy (or pip3)`
+* `pip install azure (or pip3)`
+* `pip install numpy (or pip3)`
+* `python3 (this will take you to the python interpereter CLI)`
 * `>> import nltk`
-* `nltk.download('punkt')`
+* `>> nltk.download('punkt')`
 * `there may be more but it should tell you.`
 
 Simply make your own config.py file with API keys for twitter and Microsoft
