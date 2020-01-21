@@ -1,10 +1,5 @@
 # trumptweets
 
-[![What Would Trump Tweet?][image]][hyperlink]
-
-  [hyperlink]: https://twitter.com/R3alFakeDonald
-  [image]: https://i.imgur.com/uQ0W3Tt.jpg
-
 ## Disclaimer
 This was made for CruzHacks 2020 by Garrett Webb and Chandni Nagda, please do
 not steal our work, just ask us.
@@ -39,3 +34,9 @@ will generate and output a tweet to the console as well as post it to twitter on
 
 Go to https://twitter.com/R3alFakeDonald (our twitter bot) or your make own
 twitter developer account and bot to see your madness unfurl.
+
+
+[![What Would Trump Tweet?][image]][hyperlink]
+
+  [hyperlink]: https://twitter.com/R3alFakeDonald
+  [image]: https://i.imgur.com/uQ0W3Tt.jpg
