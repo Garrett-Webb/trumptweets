@@ -125,7 +125,7 @@ def get_tweet(keyword):
     print("Starting Words: ", starting_words)
 
     mycorpus = generate_corpus(matches)
-    numsents = len(mycorpus.sents('tempout.txt'))
+    #numsents = len(mycorpus.sents('tempout.txt'))
     model = train(mycorpus)
 
     sentence = generate_sentence(starting_words, model)
