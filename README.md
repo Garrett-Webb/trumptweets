@@ -3,7 +3,7 @@
 [![What Would Trump Tweet?][image]][hyperlink]
 
   [hyperlink]: https://twitter.com/R3alFakeDonald
-  [image]: https://imgur.com/uQ0W3Tt
+  [image]: https://i.imgur.com/uQ0W3Tt.jpg
 
 ## Disclaimer
 This was made for CruzHacks 2020 by Garrett Webb and Chandni Nagda, please do
