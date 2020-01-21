@@ -26,7 +26,8 @@ while True:
     tweet = model.get_tweet(keyword)
     
     if len(tweet) > 280 or len(tweet.split()) < 8:
-        print("\n\nEither too long or too short, sorry. Trying again.\n\n")
+        print("\n\nEither too long or too short, sorry. Trying again.\n")
+        print("The tweet was: ", tweet, "\n")
         continue
     tweet = model.treat_tweet(tweet)
     api.update_status(tweet)
