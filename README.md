@@ -10,17 +10,27 @@ Generate similar nonsense for a given topic.
 
 ## Usage
 
-Install python3, nltk, tweepy, azure, and other general Python libraries
+Install what you'll need:
+* `python 3.x.x`
+* `sudo easy_install pip`
+* `pip install nltk` 
+* `pip install tweepy`
+* `pip install azure`
+* `pip install numpy`
+* `python3`
+* `>> import nltk`
+* `nltk.download('punkt')`
+* `there may be more but it should tell you.`
 
 Simply make your own config.py file with API keys for twitter and Microsoft
 Azure Text Analytics. Set the following for Microsoft Azure:
-* `subscription_key`
-* `endpoint`
-* `filename`
+* `subscription_key = "whatever"`
+* `endpoint = "whatever"`
+* `filename = "whatever"`
 
 Set the following for Twitter
-* `auth = tweepy.OAuthHandler(...)`
-* `auth.set_access_token(...)`
+* `auth = tweepy.OAuthHandler("whatever")`
+* `auth.set_access_token("whatever")`
 
 Then either run model.py with topic as the command line argument, or run
 trumptweets.py and let it go (it will continuously tweet at the time interval
