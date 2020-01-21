@@ -1,5 +1,12 @@
 # trumptweets
 
+[![alt text][image]][hyperlink]
+
+  [hyperlink]: https://twitter.com/R3alFakeDonald
+  [image]: https://twitter.com/R3alFakeDonald/photo
+    or
+  [image]: https://twitter.com/R3alFakeDonald/photo
+
 ## Disclaimer
 This was made for CruzHacks 2020 by Garrett Webb and Chandni Nagda, please do
 not steal our work, just ask us.
