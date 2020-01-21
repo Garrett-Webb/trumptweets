@@ -122,7 +122,7 @@ def get_tweet(keyword):
 
     matches = subset_documents(documents, keyword)
     starting_words = generate_starting_words(matches)
-    print(starting_words)
+    print("Starting Words: ", starting_words)
 
     mycorpus = generate_corpus(matches)
     numsents = len(mycorpus.sents('tempout.txt'))
@@ -140,7 +140,7 @@ def treat_tweet(text):
     sentence = text.split()
     i = 0
     for word in sentence:
-        if word in list_of_caps:
+        if word.lower() in list_of_caps:
             sentence[i] = word.upper()
         i = i + 1
     text = ' '.join(sentence)
@@ -151,6 +151,7 @@ def treat_tweet(text):
 
 def main():
     keyword = sys.argv[1]
+    print("keyword inputted: ", keyword)
     tweet = get_tweet(keyword)
     tweet = treat_tweet(tweet)
     print(tweet)
