@@ -137,6 +137,7 @@ def treat_tweet(text):
                     'collusion', 'obstruction', 'great', 'bad', 'facts',
                     'again', 'country', 'but', 'beg', 'promises', 'nothing',
                     'never', 'hoax', 'best', 'keep']
+    text = text.capitalize()
     sentence = text.split()
     i = 0
     for word in sentence:
@@ -145,7 +146,6 @@ def treat_tweet(text):
         i = i + 1
     text = ' '.join(sentence)
     text = re.sub(r"\s+(\W)",r"\1", text)
-    text = text.capitalize()
     return text
 
 
