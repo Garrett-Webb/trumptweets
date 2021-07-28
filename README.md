@@ -4,6 +4,8 @@
 This was made for CruzHacks 2020 by Garrett Webb and Chandni Nagda, please do
 not steal our work, just ask us. It was posted to Devpost for said hackathon at https://devpost.com/software/what-would-trump-tweet-ds6wxl.
 
+also, due to Donald Trump's twitter ban, this can't be fed any new data, but could be adapted for use on somebody else's twitter page.
+
 ## Goal
 Analyze Trump's nonsense using Microsoft Azure NLP and trigram language model.
 Generate similar nonsense for a given topic.
